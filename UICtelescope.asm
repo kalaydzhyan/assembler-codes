@@ -1,4 +1,6 @@
-; reverse-engineering for UIC radio telescope project
+; reverse-engineering of the PIC-cotroller HEX-code
+; with detailed explanation of used procedures
+; prepared for the UIC radio telescope project
 
     processor 12F675
     #include <P12F675.INC>
@@ -40,7 +42,7 @@ LADR_0x0005
     MOVWF ANSEL          ; ANSEL = 0010011 (Fosc/8 for A/D conversion, AN0-AN1 set to analog input)
     BSF OPTION_REG,7     ; GPIO pull-ups are disabled
     BCF STATUS,RP0       ; select memory bank 0
-    CLRF INTCON	          ; disable all interrupts
+    CLRF INTCON	         ; disable all interrupts
     CLRF GPIO            ; all GPIO = 0
     MOVLW 0x81
     MOVWF ADCON0         ; ADCON0 = 10000001 (A/D converter is operating on AN0, not in progress,
